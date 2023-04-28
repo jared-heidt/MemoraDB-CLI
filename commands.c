@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+// stores the current connection
+void *current_handler;
+
 void db_connect(char **args) {
     if (args[1] == NULL || args[2] == NULL) {
         fprintf(stderr, "usage: connect address port\n");
@@ -8,6 +11,7 @@ void db_connect(char **args) {
 
     void* handle;
     // handle =  memora_connect(const char *address, uint16_t port);
+    current_handler = handle;
 }
 
 void db_close(char **args) {
