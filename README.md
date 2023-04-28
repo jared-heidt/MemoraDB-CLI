@@ -19,26 +19,30 @@ memora [COMMAND] [FIRST PARAMETER] [SECOND PARAMETER]
 | `upsert` | If the key does not exist, create key-value pair. If the key already exists, update the value for the existing pair. | Key | Value |
 
 ### Examples
-Create the key value pair (challenger, 1)
+Connect to MemoraDB running at 127.0.0.1:3434
 ```bash
-$ ./memora -c challenger 1
+> connect 127.0.0.1 3434
 ```
 
-Read the key value pair with key challenger
+Insert key-value pair of color, orange
 ```bash
-$ ./memora -r challenger
+> create color orange
 ```
 
-Update the key value pair with key challenger
-Create the key value pair (challenger, 1)
+Read key-value pair with key color
 ```bash
-$ ./memora -u challenger 14
+> read color
+color orange
 ```
 
-Delete the key value pair with key challenger
-Create the key value pair (challenger, 1)
+Close current MemoraDB connection 
 ```bash
-$ ./memora -d challenger
+> close
+```
+
+Exit MemoraDB CLI
+```bash
+> exit
 ```
 
 ## References
