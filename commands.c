@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void* connect(char **args) {
+void db_connect(char **args) {
     if (args[1] == NULL || args[2] == NULL) {
         fprintf(stderr, "usage: connect address port\n");
         return;
@@ -10,7 +10,7 @@ void* connect(char **args) {
     // handle =  memora_connect(const char *address, uint16_t port);
 }
 
-void close(char **args) {
+void db_close(char **args) {
     int result;
     // result = memora_close(void *handle);
     if (result != 0) {
@@ -19,7 +19,7 @@ void close(char **args) {
     }
 }
 
-void create(char **args) {
+void create_kv(char **args) {
     if (args[1] == NULL || args[2] == NULL) {
         fprintf(stderr, "usage: create key value\n");
         return;
@@ -33,7 +33,7 @@ void create(char **args) {
     }
 }
 
-void read(char **args) {
+void read_kv(char **args) {
     if (args[1] == NULL) {
         fprintf(stderr, "usage: read key\n");
         return;
@@ -42,10 +42,10 @@ void read(char **args) {
     char* result;
     // result = char* memora_read(void *handle, const char *key);
 
-    printf("%c\n", result);
+    printf("%s\n", result);
 }
 
-void update(char **args) {
+void update_kv(char **args) {
     if (args[1] == NULL || args[2] == NULL) {
         fprintf(stderr, "usage: update key value\n");
         return;
@@ -59,7 +59,7 @@ void update(char **args) {
     }
 }
 
-void delete(char **args) {
+void delete_kv(char **args) {
     if (args[1] == NULL || args[2] == NULL) {
         fprintf(stderr, "usage: delete key\n");
         return;
@@ -72,7 +72,7 @@ void delete(char **args) {
     }
 }
 
-void upsert(char **args) {
+void upsert_kv(char **args) {
     if (args[1] == NULL || args[2] == NULL) {
         fprintf(stderr, "usage: upsert key value\n");
         return;
@@ -85,6 +85,28 @@ void upsert(char **args) {
     }
 }
 
-void exit(char **args) {
+void exit_cli(char **args) {
     exit(0);
 }
+
+struct command {
+    char *name;
+    void (*function)(char **args);
+};
+
+struct command builtin_commands[] = {
+    {"connect", db_connect},
+    {"close", db_close},
+    {"create", create_kv},
+    {"read", read_kv},
+    {"update", update_kv},
+    {"delete", delete_kv},
+    {"upsert", upsert_kv},
+    {"exit", exit_cli},
+};
+
+// Returns the number of registered commands.
+int num_builtin_commands() {
+    return sizeof(builtin_commands) / sizeof(struct command);
+}
+
