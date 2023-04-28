@@ -5,6 +5,10 @@
 #include <sys/types.h>
 #include <errno.h>
 
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 // Tokenize a string, splitting on whitespace characters. Leading and trailing
 // whitespace is ignored. Consecutive whitespace characters are treated as a
 // single delimiter. The return value is a NULL terminated array of string

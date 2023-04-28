@@ -14,7 +14,7 @@ void execute_command(char **args) {
     if (child_pid == 0) {
         execvp(args[0], args);
         perror("error");
-        exit_cli(1);
+        exit(1);
     } else if (child_pid > 0) {
         int status;
         do {

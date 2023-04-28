@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void connect(char **args) {
+void db_connect(char **args) {
     if (args[1] == NULL) {
         fprintf(stderr, "missing address\n");
     } 
@@ -12,7 +12,7 @@ void connect(char **args) {
     // handle =  memora_connect(const char *address, uint16_t port);
 }
 
-void close(char **args) {
+void db_close(char **args) {
     int result;
     // result = memora_close(void *handle);
     if (result != 0) {
@@ -20,7 +20,7 @@ void close(char **args) {
     }
 }
 
-void create(char **args) {
+void create_kv(char **args) {
     if (args[1] == NULL) {
         fprintf(stderr, "missing key\n");
     } 
@@ -36,7 +36,7 @@ void create(char **args) {
     }
 }
 
-void read(char **args) {
+void read_kv(char **args) {
     if (args[1] == NULL) {
         fprintf(stderr, "missing key\n");
     } 
@@ -47,7 +47,7 @@ void read(char **args) {
     printf("%s\n", result);
 }
 
-void update(char **args) {
+void update_kv(char **args) {
     if (args[1] == NULL) {
         fprintf(stderr, "missing key\n");
     } 
@@ -62,7 +62,7 @@ void update(char **args) {
     }
 }
 
-void delete(char **args) {
+void delete_kv(char **args) {
     if (args[1] == NULL) {
         fprintf(stderr, "missing key\n");
     } 
@@ -73,7 +73,7 @@ void delete(char **args) {
     }
 }
 
-void upsert(char **args) {
+void upsert_kv(char **args) {
     if (args[1] == NULL) {
         fprintf(stderr, "missing key\n");
     } 
@@ -97,13 +97,13 @@ struct command {
 };
 
 struct command builtin_commands[] = {
-    {"connect", connect},
-    {"close", close},
-    {"create", create},
-    {"read", read},
-    {"update", update},
-    {"delete", delete},
-    {"upsert", upsert},
+    {"connect", db_connect},
+    {"close", db_close},
+    {"create", create_kv},
+    {"read", read_kv},
+    {"update", update_kv},
+    {"delete", delete_kv},
+    {"upsert", upsert_kv},
     {"exit", exit_cli},
 };
 
