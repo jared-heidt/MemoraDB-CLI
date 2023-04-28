@@ -4,7 +4,7 @@
 void execute_command(char **args) {
     for (int i = 0; i < num_builtin_commands(); i++) {
         if (strcmp(args[0], builtin_commands[i].name) == 0) {
-            builtin_commands[i].func(args);
+            builtin_commands[i].function(args);
             return;
         }
     }
