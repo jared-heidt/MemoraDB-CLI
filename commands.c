@@ -1,6 +1,27 @@
 #include <stdio.h>
 
-void* connect(char **args) {
+struct command {
+    char *name;
+    void (*function)(char **args);
+};
+
+struct command builtin_commands[] = {
+    {"connect", connect},
+    {"close", close},
+    {"create", create},
+    {"read", read},
+    {"update", update},
+    {"delete", delete},
+    {"upsert", upsert},
+    {"exit", exit},
+};
+
+// Returns the number of registered commands.
+int num_builtin_commands() {
+    return sizeof(builtin_commands) / sizeof(struct command);
+}
+
+void connect(char **args) {
     if (args[1] == NULL) {
         fprintf(stderr, "missing address\n");
     } 
