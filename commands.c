@@ -44,7 +44,7 @@ void read(char **args) {
     char* result;
     // result = char* memora_read(void *handle, const char *key);
 
-    printf("%c\n", result);
+    printf("%s\n", result);
 }
 
 void update(char **args) {
