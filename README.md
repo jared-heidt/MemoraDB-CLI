@@ -38,3 +38,7 @@ Create the key value pair (challenger, 1)
 ```bash
 $ ./memora -d challenger
 ```
+
+## References
+- https://github.com/dmulholl/kash/tree/master
+- https://clig.dev/#the-basics
