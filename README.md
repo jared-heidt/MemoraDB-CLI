@@ -9,6 +9,7 @@ memora [COMMAND] [KEY] [VALUE]
 ### Commands 
 connect - connect to MemoraDB
 close - close connection to MemoraDB
+exit - exit cli
 create - create a key value pair
 read - list key value pairs
 update - update the value of an existing key
@@ -24,7 +25,6 @@ $ ./memora -c challenger 1
 Read the key value pair with key challenger
 ```bash
 $ ./memora -r challenger
-(challenger, 1) 
 ```
 
 Update the key value pair with key challenger
