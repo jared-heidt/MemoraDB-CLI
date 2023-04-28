@@ -88,7 +88,7 @@ void upsert(char **args) {
 }
 
 void exit_cli(char **args) {
-    exit_cli(0);
+    exit(0);
 }
 
 struct command {
