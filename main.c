@@ -4,7 +4,7 @@
 #include "parser.c"
 #include "executor.c"
 
-int main() {
+int main(int argc, char **argv) {
     while (true) {
         printf("> ");
         char *line = read_line();
