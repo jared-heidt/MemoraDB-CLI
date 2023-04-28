@@ -17,6 +17,7 @@ memora [COMMAND] [FIRST PARAMETER] [SECOND PARAMETER]
 | `update` | Update one key-value pair | Key | Value |
 | `delete` | Delete one key-value pair | Key |  |
 | `upsert` | If the key does not exist, create key-value pair. If the key already exists, update the value for the existing pair. | Key | Value |
+| `help` | List builtin commands |  |  |
 
 ### Examples
 Connect to MemoraDB running at 127.0.0.1:3434
