@@ -20,28 +20,28 @@ memora [COMMAND] [FIRST PARAMETER] [SECOND PARAMETER]
 
 ### Examples
 Connect to MemoraDB running at 127.0.0.1:3434
-```bash
+```
 > connect 127.0.0.1 3434
 ```
 
 Insert key-value pair of color, orange
-```bash
+```
 > create color orange
 ```
 
 Read key-value pair with key color
-```bash
+```
 > read color
 color orange
 ```
 
 Close current MemoraDB connection 
-```bash
+```
 > close
 ```
 
 Exit MemoraDB CLI
-```bash
+```
 > exit
 ```
 
