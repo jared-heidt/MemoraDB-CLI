@@ -1,6 +1,3 @@
-/**
- * Source: https://github.com/dmulholl/kash
- */
 #include <stdio.h>
 #include <sys/types.h>
 #include <errno.h>

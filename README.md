@@ -1,40 +1,50 @@
 # MemoraDB Command Line Interface
 ## User Commands
 ### Name
-memora - manage key value pairs in connected MemoraDB
+memora - manage key-value pairs in connected MemoraDB
 
 ### Usage
-memora [COMMAND] [KEY] [VALUE]
+memora [COMMAND] [FIRST PARAMETER] [SECOND PARAMETER]
 
 ### Commands 
-connect - connect to MemoraDB
-close - close connection to MemoraDB
-exit - exit cli
-create - create a key value pair
-read - list key value pairs
-update - update the value of an existing key
-delete - remove existing key value pair
-upsert - insert if key does note exist, update if key exists
+| Command | Description | First Parameter | Second Parameter |
+| --- | --- | --- | --- |
+| `connect` | Connect to MemoraDB | Address | Port |
+| `connect` | Close current MemoraDB connection |  |  |
+| `exit` | Exit the CLI |  |  |
+| `create` | Create one key-value pair | Key | Value |
+| `read` | Read one key-value pair | Key |  |
+| `update` | Update one key-value pair | Key |  |
+| `delete` | Delete one key-value pair | Key |  |
+| `upsert` | If the key does not exist, create key-value pair. If the key already exists, update the value for the existing pair. | Key | Value |
 
 ### Examples
-Create the key value pair (challenger, 1)
+Connect to MemoraDB running at 127.0.0.1:3434
 ```bash
-$ ./memora -c challenger 1
+> connect 127.0.0.1 3434
 ```
 
-Read the key value pair with key challenger
+Insert key-value pair of color, orange
 ```bash
-$ ./memora -r challenger
+> create color orange
 ```
 
-Update the key value pair with key challenger
-Create the key value pair (challenger, 1)
+Read key-value pair with key color
 ```bash
-$ ./memora -u challenger 14
+> read color
+color orange
 ```
 
-Delete the key value pair with key challenger
-Create the key value pair (challenger, 1)
+Close current MemoraDB connection 
 ```bash
-$ ./memora -d challenger
+> close
 ```
+
+Exit MemoraDB CLI
+```bash
+> exit
+```
+
+## References
+- https://github.com/dmulholl/kash/tree/master
+- https://clig.dev/#the-basics
