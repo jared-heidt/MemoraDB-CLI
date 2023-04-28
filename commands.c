@@ -1,27 +1,92 @@
-void connect(char **args) {
-    // call memora_connect(const char *address, uint16_t port);
+#include <stdio.h>
+
+void* connect(char **args) {
+    if (args[1] == NULL) {
+        fprintf(stderr, "missing address\n");
+    } 
+    if (args[2] == NULL) {
+        fprintf(stderr, "missing port\n");
+    } 
+
+    void* handle;
+    // handle =  memora_connect(const char *address, uint16_t port);
 }
 
 void close(char **args) {
-    // call memora_close(void *handle);
+    int result;
+    // result = memora_close(void *handle);
+    if (result != 0) {
+        fprintf(stderr, "failed to close memora connection\n");
+    }
 }
 
 void create(char **args) {
-    // call memora_create(void *handle, const char *key, const char *value);  
+    if (args[1] == NULL) {
+        fprintf(stderr, "missing key\n");
+    } 
+    if (args[2] == NULL) {
+        fprintf(stderr, "missing value\n");
+    } 
+
+    int result;
+    // result = memora_create(void *handle, const char *key, const char *value);  
+
+    if (result != 0) {
+        fprintf(stderr, "%d: could not create key-value pair\n", result);
+    }
 }
 
 void read(char **args) {
-    // call char* memora_read(void *handle, const char *key);
+    if (args[1] == NULL) {
+        fprintf(stderr, "missing key\n");
+    } 
+
+    char* result;
+    // result = char* memora_read(void *handle, const char *key);
+
+    printf("%c\n", result);
 }
 
 void update(char **args) {
-    // call memora_update(void *handle, const char *key, const char *value);
+    if (args[1] == NULL) {
+        fprintf(stderr, "missing key\n");
+    } 
+    if (args[2] == NULL) {
+        fprintf(stderr, "missing value\n");
+    } 
+    int result;
+    // int = memora_update(void *handle, const char *key, const char *value);
+
+    if (result != 0) {
+        fprintf(stderr, "%d: failed to update", result);
+    }
 }
 
 void delete(char **args) {
-    // call memora_delete(void *handle, const char *key);
+    if (args[1] == NULL) {
+        fprintf(stderr, "missing key\n");
+    } 
+    int result;
+    // result =  memora_delete(void *handle, const char *key);
+    if (result != 0) {
+        fprintf(stderr, "%d: failed to delete", result);
+    }
 }
 
 void upsert(char **args) {
-    // call memora_upsert(void *handle, const char *key, const char *value);
+    if (args[1] == NULL) {
+        fprintf(stderr, "missing key\n");
+    } 
+    if (args[2] == NULL) {
+        fprintf(stderr, "missing value\n");
+    }
+    int result;
+    // result = memora_upsert(void *handle, const char *key, const char *value);
+    if (result != 0) {
+        fprintf(stderr, "%d: failed to upsert", result);
+    }
+}
+
+void exit(char **args) {
+    exit(0);
 }
