@@ -13,7 +13,7 @@ struct command builtin_commands[] = {
     {"update", update},
     {"delete", delete},
     {"upsert", upsert},
-    {"exit", exit},
+    {"exit", exit_cli},
 };
 
 // Returns the number of registered commands.
@@ -108,6 +108,6 @@ void upsert(char **args) {
     }
 }
 
-void exit(char **args) {
-    exit(0);
+void exit_cli(char **args) {
+    exit_cli(0);
 }
