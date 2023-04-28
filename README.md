@@ -14,7 +14,7 @@ memora [COMMAND] [FIRST PARAMETER] [SECOND PARAMETER]
 | `exit` | Exit the CLI |  |  |
 | `create` | Create one key-value pair | Key | Value |
 | `read` | Read one key-value pair | Key |  |
-| `update` | Update one key-value pair | Key |  |
+| `update` | Update one key-value pair | Key | Value |
 | `delete` | Delete one key-value pair | Key |  |
 | `upsert` | If the key does not exist, create key-value pair. If the key already exists, update the value for the existing pair. | Key | Value |
 
