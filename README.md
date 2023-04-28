@@ -10,7 +10,7 @@ memora [COMMAND] [FIRST PARAMETER] [SECOND PARAMETER]
 | Command | Description | First Parameter | Second Parameter |
 | --- | --- | --- | --- |
 | `connect` | Connect to MemoraDB | Address | Port |
-| `connect` | Close current MemoraDB connection |  |  |
+| `close` | Close current MemoraDB connection |  |  |
 | `exit` | Exit the CLI |  |  |
 | `create` | Create one key-value pair | Key | Value |
 | `read` | Read one key-value pair | Key |  |
