@@ -93,6 +93,21 @@ void exit_cli(char **args) {
     exit(0);
 }
 
+void help(char **args) {
+    char* help = 
+    "MemoraDB CLI - manage key-value pairs in connected MemoraDB\n"
+    "Commands:"
+    "   connect: connect to MemoraDB\n"
+    "   close: close current MemoraDB connection\n"
+    "   exit: exit the cli\n"
+    "   create: create one-key value pair\n"
+    "   read: read one key-value pair\n"
+    "   update: close current MemoraDB connection\n"
+    "   delete: close current MemoraDB connection\n"
+    "   upsert: if key exists perform update, otherwise perform create\n";
+    printf("%s", help);
+}
+
 struct command {
     char *name;
     void (*function)(char **args);
@@ -107,6 +122,7 @@ struct command builtin_commands[] = {
     {"delete", delete_kv},
     {"upsert", upsert_kv},
     {"exit", exit_cli},
+    {"help", help}
 };
 
 // Returns the number of registered commands.
