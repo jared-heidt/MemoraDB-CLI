@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include "hash_table.c"
 
 // stores the current connection
 void *current_handler;
+
+struct HashTable command_table;
 
 void db_connect(char **args) {
     if (args[1] == NULL || args[2] == NULL) {
@@ -108,25 +111,15 @@ void help(char **args) {
     printf("%s", help);
 }
 
-struct command {
-    char *name;
-    void (*function)(char **args);
-};
-
-struct command builtin_commands[] = {
-    {"connect", db_connect},
-    {"close", db_close},
-    {"create", create_kv},
-    {"read", read_kv},
-    {"update", update_kv},
-    {"delete", delete_kv},
-    {"upsert", upsert_kv},
-    {"exit", exit_cli},
-    {"help", help}
-};
-
-// Returns the number of registered commands.
-int num_builtin_commands() {
-    return sizeof(builtin_commands) / sizeof(struct command);
+void populate_command_table() {
+    hash_table_init(&command_table, 16);
+    hash_table_insert(&command_table, "connect", db_connect);
+    hash_table_insert(&command_table, "close", db_close);
+    hash_table_insert(&command_table, "create", create_kv);
+    hash_table_insert(&command_table, "read", read_kv);
+    hash_table_insert(&command_table, "update", update_kv);
+    hash_table_insert(&command_table, "delete", delete_kv);
+    hash_table_insert(&command_table, "upsert", upsert_kv);
+    hash_table_insert(&command_table, "exit", exit_cli);
+    hash_table_insert(&command_table, "help", help);
 }
-
