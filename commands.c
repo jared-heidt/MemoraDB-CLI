@@ -93,14 +93,13 @@ void upsert_kv(char **args) {
 }
 
 void exit_cli(char **args) {
-    hash_table_free(&command_table);
     exit(0);
 }
 
 void help(char **args) {
     char* help = 
     "MemoraDB CLI - manage key-value pairs in connected MemoraDB\n"
-    "Commands:"
+    "Commands:\n"
     "   connect: connect to MemoraDB\n"
     "   close: close current MemoraDB connection\n"
     "   exit: exit the cli\n"
@@ -112,8 +111,20 @@ void help(char **args) {
     printf("%s", help);
 }
 
+void echo(char **args) {
+     if (args[1] == NULL) {
+        fprintf(stderr, "usage: echo message\n");
+        return;
+    }
+
+    // run ps during this time to see process
+    sleep(5);
+
+    printf("%s\n", args[1]);
+}
+
 void populate_command_table() {
-    hash_table_init(&command_table, 16);
+    hash_table_init(&command_table, 10);
     hash_table_insert(&command_table, "connect", db_connect);
     hash_table_insert(&command_table, "close", db_close);
     hash_table_insert(&command_table, "create", create_kv);
@@ -121,6 +132,7 @@ void populate_command_table() {
     hash_table_insert(&command_table, "update", update_kv);
     hash_table_insert(&command_table, "delete", delete_kv);
     hash_table_insert(&command_table, "upsert", upsert_kv);
-    hash_table_insert(&command_table, "exit", exit_cli);
     hash_table_insert(&command_table, "help", help);
+    hash_table_insert(&command_table, "echo", echo);
+    hash_table_insert(&command_table, "exit", exit_cli);
 }

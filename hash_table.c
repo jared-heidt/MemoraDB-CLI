@@ -47,18 +47,3 @@ void (*hash_table_lookup(struct HashTable* ht, char* key))(char** args) {
     }
     return NULL;
 }
-
-void hash_table_free(struct HashTable* table) {
-    // free each linked list in the hash table
-    for (int i = 0; i < table->size; i++) {
-        struct HashNode* node = table->table[i];
-        while (node != NULL) {
-            struct HashNode* next = node->next;
-            free(node);
-            node = next;
-        }
-    }
-
-    // free the hash table itself
-    free(table);
-}
