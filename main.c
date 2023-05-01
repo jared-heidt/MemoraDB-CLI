@@ -5,6 +5,7 @@
 #include "executor.c"
 
 int main(int argc, char **argv) {
+    populate_command_table();
     while (true) {
         printf("> ");
         char *line = read_line();
