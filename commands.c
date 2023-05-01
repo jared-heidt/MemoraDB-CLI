@@ -93,6 +93,7 @@ void upsert_kv(char **args) {
 }
 
 void exit_cli(char **args) {
+    hash_table_free(&command_table);
     exit(0);
 }
 
