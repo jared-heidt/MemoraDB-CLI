@@ -9,11 +9,15 @@ void execute_command(char **args) {
         return;
     }
 
+    if (func == exit_cli) {
+        exit(0);
+    }
+
     pid_t child_pid = fork();
 
     if (child_pid == 0) {
         func(args);
-        exit(0);
+        exit(1);
     } else if (child_pid > 0) {
         int status;
         do {
