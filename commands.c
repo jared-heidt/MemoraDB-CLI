@@ -62,7 +62,7 @@ void update_kv(char **args) {
     // int = memora_update(void *handle, const char *key, const char *value);
 
     if (result != 0) {
-        fprintf(stderr, "%d: failed to update", result);
+        fprintf(stderr, "%d: failed to update\n", result);
     }
 }
 
@@ -75,7 +75,7 @@ void delete_kv(char **args) {
     int result;
     // result =  memora_delete(void *handle, const char *key);
     if (result != 0) {
-        fprintf(stderr, "%d: failed to delete", result);
+        fprintf(stderr, "%d: failed to delete\n", result);
     }
 }
 
@@ -88,7 +88,7 @@ void upsert_kv(char **args) {
     int result;
     // result = memora_upsert(void *handle, const char *key, const char *value);
     if (result != 0) {
-        fprintf(stderr, "%d: failed to upsert", result);
+        fprintf(stderr, "%d: failed to upsert\n", result);
     }
 }
 
