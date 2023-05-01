@@ -2,14 +2,6 @@
 #include "commands.c"
 
 void execute_command(char **args) {
-    /*
-    for (int i = 0; i < num_builtin_commands(); i++) {
-        if (strcmp(args[0], builtin_commands[i].name) == 0) {
-            builtin_commands[i].function(args);
-            return;
-        }
-    }
-    */
     void (*func)(char**) = hash_table_lookup(&command_table, args[0]);
 
     if (func == NULL) {
