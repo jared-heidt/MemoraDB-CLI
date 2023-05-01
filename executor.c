@@ -20,16 +20,14 @@ void execute_command(char **args) {
     pid_t child_pid = fork();
 
     if (child_pid == 0) {
-        //execvp(args[0], args);
         func(args);
-        perror("error");
-        exit(1);
+        exit(0);
     } else if (child_pid > 0) {
         int status;
         do {
             waitpid(child_pid, &status, WUNTRACED);
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
     } else {
-        perror("error");
+        perror("error creating child process");
     }
 }
